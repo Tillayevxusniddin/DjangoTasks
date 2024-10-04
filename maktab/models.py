@@ -7,3 +7,15 @@ class Maktab(models.Model):
 
     def __str__(self):
         return self.nomi
+
+
+class Book(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=100)
+    author = models.CharField(max_length=30)
+    publication_year = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+

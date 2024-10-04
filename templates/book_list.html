@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kitoblar ro'yxati</title>
+</head>
+<body>
+    <h1>Barcha Kitoblar Ro'yxati</h1>
+    <ul>
+        {% for book in books %}
+        <li>{{ book.name }} - {{ book.author }} ({{ book.publication_year }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

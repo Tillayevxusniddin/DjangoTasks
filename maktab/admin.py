@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Maktab
+from .models import Maktab, Book
 
 class MaktabAdmin(admin.ModelAdmin):
     list_display = ('nomi', 'manzil', 'tashkil_topgan_yili')
@@ -7,3 +7,4 @@ class MaktabAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Maktab, MaktabAdmin)
+admin.site.register(Book)
