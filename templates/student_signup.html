@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Ro'yxatdan o'tish</title>
+</head>
+<body>
+    <h1>Student Ro'yxatdan o'tish</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Formani ko'rsatish -->
+        <button type="submit">Yuborish</button>
+    </form>
+</body>
+</html>

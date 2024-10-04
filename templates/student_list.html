@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Studentlar Ro'yxati</title>
+</head>
+<body>
+    <h1>Studentlar Ro'yxati</h1>
+    <ul>
+        {% for student in students %}
+        <li>{{ student.name }} - {{ student.age }} - {{ student.email }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
