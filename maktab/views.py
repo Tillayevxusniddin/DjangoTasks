@@ -1,46 +1,18 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
-from .forms import StudentSignUpForm
-from .models import Student
-
-from .models import Book
-
-def book_list(request):
-    books = Book.objects.all()
-    return render(request, 'book_list.html', {'books': books})
-
-def book_detail(request, book_id):
-    book = get_object_or_404(Book, id=book_id)
-    return render(request, 'book_detail.html', {'book':book})
+from django.shortcuts import render, get_object_or_404
+from .models import Post, Student
 
 
-def student_signup(request):
-    if request.method == 'POST':
-        form = StudentSignUpForm(request.POST)
-        if form.is_valid():
-            form.save()  # Yangi studentni ma'lumotlar bazasiga saqlash
-            return redirect('student_list')  # Ro'yxatga qaytish
-    else:
-        form = StudentSignUpForm()
-    return render(request, 'student_signup.html', {'form': form})
-
-def student_list(request):
-    students = Student.objects.all()
-    return render(request, 'student_list.html', {'students': students})
+def post_list(request):
+    posts = Post.objects.all()  # Barcha postlarni olish
+    return render(request, 'post_list.html', {'posts': posts})
 
 
-from django.shortcuts import get_object_or_404
+
+def post_detail(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    return render(request, 'post_detail.html', {'post': post})
 
 
-def student_edit(request, student_id):
-    student = get_object_or_404(Student, id=student_id)
-
-    if request.method == 'POST':
-        form = StudentSignUpForm(request.POST, instance=student)
-        if form.is_valid():
-            form.save()
-            return redirect('student_list')
-    else:
-        form = StudentSignUpForm(instance=student)
-
-    return render(request, 'student_edit.html', {'form': form, 'student': student})
+def adult_students(request):
+    adults = Student.objects.adults()
+    return render(request, 'adult_students.html', {'students': adults})
