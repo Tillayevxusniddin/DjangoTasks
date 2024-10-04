@@ -5,9 +5,13 @@
 </head>
 <body>
     <h1>Barcha Kitoblar Ro'yxati</h1>
-    <ul>
+   <ul>
         {% for book in books %}
-        <li>{{ book.name }} - {{ book.author }} ({{ book.publication_year }})</li>
+        <li>
+            <a href="{% url 'book_detail' book.id %}">
+                {{ book.name }} - {{ book.author }} ({{ book.publication_year }})
+            </a>
+        </li>
         {% endfor %}
     </ul>
 </body>
