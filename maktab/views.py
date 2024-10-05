@@ -1,18 +1,28 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Post, Student
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Siz tizimga muvaffaqiyatli kirdingiz')
+            return redirect('profile')  # Profile sahifasiga yo'naltirish
+        else:
+            messages.error(request, 'Login yoki parol xato')
+            return redirect('login')  # Login sahifasiga qaytarish
+    return render(request, 'login.html')
+
+def user_logout(request):
+    logout(request)
+    messages.info(request, 'Siz tizimdan chiqib ketdingiz')
+    return redirect('login')  # Login sahifasiga qaytarish
 
 
-def post_list(request):
-    posts = Post.objects.all()  # Barcha postlarni olish
-    return render(request, 'post_list.html', {'posts': posts})
-
-
-
-def post_detail(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    return render(request, 'post_detail.html', {'post': post})
-
-
-def adult_students(request):
-    adults = Student.objects.adults()
-    return render(request, 'adult_students.html', {'students': adults})
+@login_required
+def profile(request):
+    return render(request, 'profile.html')

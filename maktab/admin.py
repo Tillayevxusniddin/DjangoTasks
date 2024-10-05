@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from maktab.models import Post, Student, Course
+# from maktab.models import Post, Student, Course
 
 # from .models import Maktab, Book
 
@@ -12,6 +12,6 @@ from maktab.models import Post, Student, Course
 # admin.site.register(Maktab, MaktabAdmin)
 # admin.site.register(Book)
 
-admin.site.register(Post)
-admin.site.register(Student)
-admin.site.register(Course)
+# admin.site.register(Post)
+# admin.site.register(Student)
+# admin.site.register(Course)
