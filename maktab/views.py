@@ -2,6 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .forms import SignUpForm
+
 
 def user_login(request):
     if request.method == 'POST':
@@ -26,3 +28,18 @@ def user_logout(request):
 @login_required
 def profile(request):
     return render(request, 'profile.html')
+
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            # Ma'lumotlarni saqlash
+            user = form.save()
+            return render(request, 'profile.html', {'user': user})
+    else:
+        form = SignUpForm()
+
+    return render(request, 'signup.html', {'form': form})
+
+
