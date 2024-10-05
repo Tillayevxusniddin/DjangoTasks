@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDU Talabalari</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1 class="highlight">JDU talabalari</h1>
+    <img src="{{ student_image_url }}" alt="Talaba rasm" width="200">
+
+    <video width="320" height="240" controls>
+    <source src="{% static 'videos/video.mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    
+    <form>
+    <input type="text" id="myInput">
+    <button type="button" onclick="handleClick()">Send to Console</button>
+    </form>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
