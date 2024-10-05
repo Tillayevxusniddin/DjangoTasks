@@ -1,0 +1,24 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application List</title>
+</head>
+<body>
+    <h1>Yuklangan Applicationlar</h1>
+
+    <ul>
+        {% for application in applications %}
+        <li>
+            <strong>{{ application.title }}</strong><br>
+            {{ application.description }}<br>
+            <a href="{{ application.application_file.url }}">Faylni ko'rish</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'upload_application' %}">Fayl yuklash</a>
+</body>
+</html>
